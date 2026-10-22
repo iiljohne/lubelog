@@ -1,4 +1,5 @@
-﻿using CarCareTracker.Helper;
+﻿using CarCareTracker.Filter;
+using CarCareTracker.Helper;
 using CarCareTracker.Logic;
 using CarCareTracker.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -91,7 +92,7 @@ namespace CarCareTracker.Middleware
                         new(ClaimTypes.NameIdentifier, userData.Id.ToString()),
                         new(ClaimTypes.Email, userData.EmailAddress),
                         new(ClaimTypes.Role, "APIAuth"),
-                        new(ClaimTypes.Role, "JWTAuth")
+                        new(ClaimTypes.Role, DenyJWTFilter.JWTAuthRole)
                     };
                     if (userData.IsAdmin)
                     {
